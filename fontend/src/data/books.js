@@ -10,7 +10,7 @@ const books = [
     publisher: "NXB Hội Nhà Văn",
     year: 2020,
     views: 0,
-    book_copies: [{}],
+    book_copies: [{ status: "available" }],
     image: "https://cdn.nhandan.vn/images/1ea1ae7a315d88fc6fbf43696082611523490f259dc3bd55a7ac4c6a5fae73537b054ce8d9817d04eb1c5b0b68cef9b71e8364d0e27d5fd65c42a66debd58689/doc-sach-9398.png"
   },
   {
@@ -21,7 +21,7 @@ const books = [
     publisher: "NXB Giáo Dục",
     year: 2022,
     views: 87,
-    book_copies: [],
+    book_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-photo/modern-laptop-computer-desk_23-2147847115.jpg"
   },
   {
@@ -32,7 +32,7 @@ const books = [
     publisher: "NXB Đại Học Quốc Gia",
     year: 2021,
     views: 210,
-    book_copies: [{}],
+    book_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/premium-vector/abstract-math-cover-design-template_23-2148994529.jpg"
   },
   {
@@ -43,7 +43,7 @@ const books = [
     publisher: "NXB Khoa Học Xã Hội",
     year: 2019,
     views: 75,
-    book_copies: [{}],
+    book_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/open-book-concept-illustration_114360-7477.jpg"
   },
   {
@@ -54,7 +54,7 @@ const books = [
     publisher: "NXB Lao Động",
     year: 2021,
     views: 95,
-    book_copies: [{}],
+    book_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-vector/website-creator-concept-illustration_114360-3241.jpg"
   },
   {
@@ -65,7 +65,7 @@ const books = [
     publisher: "NXB Bách Khoa",
     year: 2020,
     views: 122,
-    book_copies: [{}],
+    book_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/data-organization-concept-illustration_114360-2851.jpg"
   },
   {
@@ -76,7 +76,7 @@ const books = [
     publisher: "NXB Giáo Dục",
     year: 2018,
     views: 201,
-    book_copies: [],
+    book_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-vector/maths-school-subject-banner_107791-17294.jpg"
   },
   {
@@ -87,7 +87,7 @@ const books = [
     publisher: "NXB Trẻ",
     year: 2023,
     views: 150,
-    book_copies: [{}],
+    ook_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-photo/children-book-cover-design_53876-94823.jpg"
   },
   {
@@ -98,7 +98,7 @@ const books = [
     publisher: "NXB Công Nghệ",
     year: 2021,
     views: 112,
-    book_copies: [{}],
+    ook_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/java-programming-concept_23-2148749193.jpg"
   },
   {
@@ -109,7 +109,7 @@ const books = [
     publisher: "NXB Đại Học Quốc Gia",
     year: 2023,
     views: 130,
-    book_copies: [{}],
+    ook_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-vector/statistics-concept-illustration_114360-8706.jpg"
   },
   {
@@ -120,7 +120,7 @@ const books = [
     publisher: "NXB Phụ Nữ",
     year: 2017,
     views: 89,
-    book_copies: [{}],
+    ook_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/baby-psychology-concept-illustration_114360-8902.jpg"
   },
   {
@@ -131,7 +131,7 @@ const books = [
     publisher: "NXB Đại Học Quốc Gia",
     year: 2022,
     views: 178,
-    book_copies: [{}],
+    ook_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-vector/creative-geometry-design_23-2148894661.jpg"
   },
   {
@@ -142,7 +142,7 @@ const books = [
     publisher: "NXB Thanh Niên",
     year: 2020,
     views: 199,
-    book_copies: [{}],
+    ook_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/ux-ui-designer-concept-illustration_114360-1067.jpg"
   },
   {
@@ -153,7 +153,7 @@ const books = [
     publisher: "NXB Tri Thức",
     year: 2021,
     views: 85,
-    book_copies: [{}],
+    ook_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-vector/psychology-illustration_23-2148697332.jpg"
   },
   {
@@ -164,7 +164,7 @@ const books = [
     publisher: "NXB Lao Động",
     year: 2018,
     views: 220,
-    book_copies: [{}],
+    ook_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-vector/communication-concept-illustration_114360-3766.jpg"
   },
   {
@@ -175,7 +175,7 @@ const books = [
     publisher: "NXB Alpha Books",
     year: 2021,
     views: 321,
-    book_copies: [{}],
+    ook_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-vector/decision-making-concept-illustration_114360-7895.jpg"
   },
   {
@@ -186,7 +186,7 @@ const books = [
     publisher: "NXB Giáo Dục",
     year: 2020,
     views: 310,
-    book_copies: [{}],
+    book_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/book-lover-concept-illustration_114360-10574.jpg"
   },
   {
@@ -197,7 +197,7 @@ const books = [
     publisher: "NXB Chính Trị Quốc Gia",
     year: 2019,
     views: 160,
-    book_copies: [{}],
+    book_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/history-illustration_23-2148498439.jpg"
   },
   {
@@ -208,7 +208,7 @@ const books = [
     publisher: "NXB Tổng Hợp",
     year: 2022,
     views: 298,
-    book_copies: [{}],
+    book_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/happiness-concept-illustration_114360-1652.jpg"
   },
   {
@@ -219,7 +219,7 @@ const books = [
     publisher: "NXB Khoa Học Tự Nhiên",
     year: 2016,
     views: 380,
-    book_copies: [{}],
+    book_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/galaxy-concept-illustration_114360-2922.jpg"
   },
   {
@@ -230,7 +230,7 @@ const books = [
     publisher: "NXB Bách Khoa",
     year: 2023,
     views: 187,
-    book_copies: [{}],
+    book_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-vector/database-concept-illustration_114360-2884.jpg"
   },
   {
@@ -241,7 +241,7 @@ const books = [
     publisher: "NXB Thống Kê",
     year: 2022,
     views: 265,
-    book_copies: [{}],
+    book_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/artificial-intelligence-concept-illustration_114360-2798.jpg"
   },
   {
@@ -252,7 +252,7 @@ const books = [
     publisher: "NXB Khoa Học",
     year: 2022,
     views: 140,
-    book_copies: [{}],
+    book_copies: [{ status: "available" }],
     image: "https://img.freepik.com/free-vector/machine-learning-concept-illustration_114360-7276.jpg"
   },
   {
@@ -263,7 +263,7 @@ const books = [
     publisher: "NXB Đại Học Sư Phạm",
     year: 2019,
     views: 192,
-    book_copies: [{}],
+    book_copies: [{ status: "borrowed" }],
     image: "https://img.freepik.com/free-vector/statistical-analysis-concept-illustration_114360-8289.jpg"
   }
 ];

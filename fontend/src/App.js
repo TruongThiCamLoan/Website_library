@@ -15,7 +15,7 @@ function AppContent() {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const isLibrarian = localStorage.getItem("role") === "librarian";
 
-  const hideLayoutRoutes = ["/login", "/register", "/forgot-password", "/change-password","/profile"];
+  const hideLayoutRoutes = ["/login", "/register", "/forgot-password", "/change-password"];
   const hideLayout = hideLayoutRoutes.includes(location.pathname);
 
   return (
@@ -38,6 +38,7 @@ function AppContent() {
 
           {/* User only */}
           <Route path="/history" element={isLoggedIn ? <BorrowHistory /> : <Navigate to="/login" />} />
+          <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
 
           {/* Admin only */}
           <Route path="/library-management" element={isLoggedIn && isLibrarian ? <AdminDashboard /> : <Navigate to="/login" />} />

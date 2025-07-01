@@ -13,7 +13,7 @@ export default function BookList() {
   const [currentPage, setCurrentPage] = useState(1);
   const booksPerPage = 8;
 
-  // Tạo danh sách thể loại duy nhất
+  // Lấy danh sách thể loại duy nhất
   const categories = [
     ...new Set(
       books.map((b) =>
@@ -24,7 +24,7 @@ export default function BookList() {
     ),
   ];
 
-  // Hàm lọc theo nhiều tiêu chí
+  // Lọc sách theo các tiêu chí
   const filtered = books.filter((book) => {
     const keyword = filters.keyword.toLowerCase();
     const title = book.title?.toLowerCase() || "";
@@ -60,18 +60,6 @@ export default function BookList() {
     <div className="container py-4">
       {/* Bộ lọc */}
       <form className="row g-2 mb-4">
-        {/* <div className="col-md-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Tìm theo tên sách..."
-            value={filters.keyword}
-            onChange={(e) => {
-              setFilters({ ...filters, keyword: e.target.value });
-              setCurrentPage(1);
-            }}
-          />
-        </div> */}
         <div className="col-md-2">
           <select
             className="form-select"
@@ -163,9 +151,7 @@ export default function BookList() {
                 </li>
               ))}
               <li
-                className={`page-item ${
-                  currentPage === totalPages ? "disabled" : ""
-                }`}
+                className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}
               >
                 <button
                   className="page-link"

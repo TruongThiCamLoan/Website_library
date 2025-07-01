@@ -15,9 +15,19 @@ export default function BookDetail() {
   }
 
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  const isAvailable = book.book_copies?.length > 0;
+  
+  // ✅ Tính số lượng còn dựa trên status "available"
+  const availableCopies = book.book_copies?.filter(copy => copy.status === "available") || [];
+  const availableCount = availableCopies.length;
+  const isAvailable = availableCount > 0;
+
   const authors = book.authors?.map(a => a.name).join(", ") || "Không rõ";
   const category = book.category?.name || "Chưa phân loại";
+
+  const relatedBooks = books.filter(
+  b => b.id !== book.id && b.category?.name === book.category?.name
+).slice(0, 4);
+
 
   const handleAction = (type) => {
     if (!isLoggedIn) {
@@ -54,7 +64,7 @@ export default function BookDetail() {
             <li><strong>NXB:</strong> {book.publisher || "?"}</li>
             <li><strong>Năm:</strong> {book.year || "?"}</li>
             <li><strong>Lượt xem:</strong> {book.views || 0}</li>
-            <li><strong>Số lượng còn:</strong> {book.book_copies?.length || 0}</li>
+            <li><strong>Số lượng còn:</strong> {availableCount}</li>
           </ul>
 
           {/* Nút mượn hoặc đặt trước */}
@@ -90,11 +100,40 @@ export default function BookDetail() {
           {book.description || `Cuốn sách "${book.title}" mang đến nhiều cảm xúc và giá trị sống. Hãy đón đọc để khám phá những điều tuyệt vời từ tác phẩm này.`}
         </p>
       </div>
+      {/* Sách liên quan */}
+            {relatedBooks.length > 0 && (
+              <div className="mt-5 pt-4 border-top">
+                <h5 className="text-muted mb-4">📚 Sách Cùng Thể Loại</h5>
+                <div className="row">
+                  {relatedBooks.map(rb => (
+                    <div key={rb.id} className="col-md-3 mb-4">
+                      <Link to={`/book/${rb.id}`} className="text-decoration-none text-dark">
+                        <div className="card h-100 shadow-sm border-0 rounded-4">
+                          <div className="position-relative" style={{ height: "250px", overflow: "hidden" }}>
+                            <img
+                              src={rb.image}
+                              alt={rb.title}
+                              className="w-100 h-100 object-fit-cover"
+                            />
+                          </div>
+                          <div className="card-body bg-light-subtle">
+                            <h6 className="fw-semibold text-primary-emphasis">{rb.title}</h6>
+                            <p className="small text-muted mb-0">{rb.authors?.map(a => a.name).join(", ")}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
       {/* Nút quay lại */}
       <div className="mt-4">
         <Link to="/" className="btn btn-outline-dark">← Quay lại danh sách</Link>
       </div>
     </div>
+
+    
   );
 }

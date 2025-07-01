@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 export default function BookCard({ book }) {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
-  // Theo UML: book.authors: Author[], book.category: Category, book.book_copies: BookCopy[]
+  // Tác giả, thể loại
   const authors = book.authors?.map(author => author.name).join(", ") || "Không rõ";
   const category = book.category?.name || "Chưa phân loại";
-  const isAvailable = Array.isArray(book.book_copies) && book.book_copies.length > 0;
+
+  // ✅ Tính số lượng sách còn lại (status === "available")
+  const availableCount = Array.isArray(book.book_copies)
+    ? book.book_copies.filter(copy => copy.status === "available").length
+    : 0;
+
+  const isAvailable = availableCount > 0;
 
   const handleBorrow = (e) => {
     e.preventDefault();
@@ -34,6 +40,7 @@ export default function BookCard({ book }) {
             <li><strong>Thể loại:</strong> {category}</li>
             <li><strong>NXB:</strong> {book.publisher || "Không rõ"}</li>
             <li><strong>Năm:</strong> {book.year || "?"}</li>
+            <li><strong>Số lượng còn:</strong> {availableCount > 0 ? availableCount : "Hết sách"}</li>
           </ul>
 
           <div className="mt-auto d-flex justify-content-between align-items-center">

@@ -4,8 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 export default function RegisterForm() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: "", email: "", password: "", confirmPassword: "",
-    phone: "", school_name: "", address: ""
+    name: "", email: "", password: "", confirmPassword: "", phone: ""
   });
   const [errors, setErrors] = useState({});
 
@@ -14,7 +13,7 @@ export default function RegisterForm() {
 
   const validateForm = () => {
     const errs = {};
-    const { name, email, password, confirmPassword, phone, school_name, address } = form;
+    const { name, email, password, confirmPassword, phone } = form;
 
     if (!name.trim()) errs.name = "Vui lòng nhập tên đăng nhập.";
     else if (name.length < 6) errs.name = "Tên đăng nhập không được nhỏ hơn 6 ký tự.";
@@ -29,8 +28,6 @@ export default function RegisterForm() {
     else if (password !== confirmPassword) errs.confirmPassword = "Mật khẩu xác nhận không trùng khớp.";
 
     if (!phone.trim()) errs.phone = "Vui lòng nhập số điện thoại.";
-    if (!school_name.trim()) errs.school_name = "Vui lòng nhập tên trường.";
-    if (!address.trim()) errs.address = "Vui lòng nhập địa chỉ.";
 
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
     if (existingUsers.some(u => u.name === name)) errs.name = "Tên đăng nhập đã tồn tại.";
@@ -51,9 +48,11 @@ export default function RegisterForm() {
       return;
     }
 
-    const { name, email, password, phone, school_name, address } = form;
+    const { name, email, password, phone } = form;
     const newUser = {
-      name, email, password, phone, school_name, address,
+      name, email, password, phone,
+      school_name: "", // để trống ban đầu
+      address: "",
       status: "active", role: "reader"
     };
 
@@ -82,12 +81,9 @@ export default function RegisterForm() {
             {[
               { name: "name", type: "text", placeholder: "Tên đăng nhập" },
               { name: "phone", type: "text", placeholder: "Số điện thoại" },
-              { name: "school_name", type: "text", placeholder: "Tên trường" },
-              { name: "address", type: "text", placeholder: "Địa chỉ" },
               { name: "email", type: "email", placeholder: "Email .edu.vn" },
               { name: "password", type: "password", placeholder: "Mật khẩu" },
               { name: "confirmPassword", type: "password", placeholder: "Xác nhận mật khẩu" }
-              
             ].map(({ name, type, placeholder }) => (
               <div className="mb-3" key={name}>
                 <input

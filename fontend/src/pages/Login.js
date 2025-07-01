@@ -6,7 +6,14 @@ export default function LoginForm() {
   const [user, setUser] = useState({ username: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
 
-   const validate = () => {
+  // Tài khoản giả lập
+  const accounts = {
+    admin1: { email: "admin@student.edu.vn", password: "admin1", role: "librarian" },
+    user123: { email: "user@student.edu.vn", password: "user123", role: "student" },
+    nghia123: { email: "nghia@student.edu.vn", password: "123456", role: "student" },
+  };
+
+  const validate = () => {
     const errs = {};
     if (!user.username) errs.username = "Vui lòng nhập tên đăng nhập";
     else if (user.username.length < 6) errs.username = "Tên đăng nhập phải từ 6 ký tự";
@@ -26,15 +33,11 @@ export default function LoginForm() {
     const errs = validate();
     if (Object.keys(errs).length > 0) return setErrors(errs);
 
-    const account = {
-      admin: { email: "admin@edu.vn", password: "admin", role: "librarian" },
-      user: { email: "user1234@edu.vn", password: "user1234", role: "student" },
-    };
-
-    const match = account[user.username];
+    const match = accounts[user.username];
     if (match && match.email === user.email && match.password === user.password) {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("role", match.role);
+      localStorage.setItem("username", user.username);
       window.dispatchEvent(new Event("storage"));
       navigate("/");
     } else {
@@ -63,7 +66,11 @@ export default function LoginForm() {
                 <input
                   type={field === "password" ? "password" : "text"}
                   className={`form-control ${errors[field] ? "is-invalid" : ""}`}
-                  placeholder={field === "username" ? "Tên đăng nhập" : field === "email" ? "Email" : "Mật khẩu"}
+                  placeholder={
+                    field === "username" ? "Tên đăng nhập"
+                    : field === "email" ? "Email"
+                    : "Mật khẩu"
+                  }
                   value={user[field]}
                   onChange={(e) => setUser({ ...user, [field]: e.target.value })}
                 />
@@ -73,20 +80,18 @@ export default function LoginForm() {
 
             <div className="d-flex justify-content-between align-items-center mb-3">
               <div className="form-check">
-                <input className="form-check-input" type="checkbox" id="agree" required />
+                <input className="form-check-input" type="checkbox" id="agree"/>
                 <label className="form-check-label" htmlFor="agree">Ghi nhớ tài khoản</label>
               </div>
-
               <Link to="/forgot-password" className="text-decoration-none text-danger">
                 Quên mật khẩu?
               </Link>
             </div>
 
-           <div className="d-flex gap-2">
-            <button type="submit" className="btn btn-danger w-50">Đăng nhập</button>
-            <Link to="/register" className="btn btn-outline-danger w-50">Đăng ký</Link>
-          </div>
-
+            <div className="d-flex gap-2">
+              <button type="submit" className="btn btn-danger w-50">Đăng nhập</button>
+              <Link to="/register" className="btn btn-outline-danger w-50">Đăng ký</Link>
+            </div>
           </form>
         </div>
 

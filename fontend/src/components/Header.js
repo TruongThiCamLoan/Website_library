@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import books from "../data/books";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 export default function Header() {
   const navigate = useNavigate();
@@ -77,8 +79,9 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Tìm kiếm + Tài khoản */}
+        {/* Tìm kiếm + Chuông + Tài khoản */}
         <div className="d-flex align-items-center position-relative">
+          {/* Form tìm kiếm */}
           <form className="d-flex me-3" onSubmit={handleSearch}>
             <input
               type="text"
@@ -92,7 +95,8 @@ export default function Header() {
 
             {/* Gợi ý tìm kiếm */}
             {suggestions.length > 0 && (
-              <div className="position-absolute bg-white shadow rounded mt-5 p-2"
+              <div
+                className="position-absolute bg-white shadow rounded mt-5 p-2"
                 style={{ top: "100%", left: 0, zIndex: 1000, width: "100%" }}
               >
                 {suggestions.map((book) => (
@@ -113,6 +117,20 @@ export default function Header() {
               </div>
             )}
           </form>
+
+          {/* Chuông thông báo */}
+          <div className="me-3 position-relative">
+            <button
+              className="btn btn-outline-secondary position-relative"
+              title="Thông báo"
+              onClick={() => alert("Bạn có 2 sách sắp hết hạn!")}
+            >
+              <i className="bi bi-bell fs-5"></i>
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                2
+              </span>
+            </button>
+          </div>
 
           {/* Dropdown tài khoản */}
           <div className="dropdown">
